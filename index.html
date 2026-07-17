@@ -1450,8 +1450,8 @@
 <button id="texit" style="display: block;">✕ 발표 종료 (Esc)</button>
 <div id="tcount" style="display: block;">35 / 38</div>
 <div id="thint" style="display: block;">← → 또는 클릭으로 이동</div>
-<button id="tedit" onclick="talkEditToggle()" style="display: block;">✏️ 슬라이드 편집</button>
-<button id="tsave" onclick="talkSave()" style="display: none;">💾 저장 (HTML 다운로드)</button>
+
+
 <div class="tehint">✏️ <b>편집 모드</b><br>· 글자를 클릭해 바로 수정<br>· 회색 상자·이미지를 클릭하면 사진을 넣을 수 있어요 (붙여넣기 또는 파일 선택)<br>· 다 되면 <b>저장</b>을 눌러 새 HTML을 내려받아 다시 배포하세요<br>· 편집 중에는 클릭으로 슬라이드가 넘어가지 않습니다
 
 <script>
@@ -1673,7 +1673,8 @@
   var enterBtn=document.getElementById('enterBtn');
   if(intro&&enterBtn){
     var ih=location.hash.replace('#','');
-    if(ih&&ih!=='home'&&PAGES.indexOf(ih)>-1){intro.classList.add('hidden');}
+    var deep=(ih==='talk')||(ih&&ih!=='home'&&PAGES.indexOf(ih)>-1);
+    if(deep){intro.classList.add('hidden');}else{intro.classList.remove('hidden');}
     enterBtn.addEventListener('click',function(){intro.classList.add('hidden');});
   }
 
